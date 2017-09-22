@@ -29,3 +29,11 @@ import re
 # print(str.split(' '))
 
 # s = "用python做些事"
+
+import hashlib
+
+pwd = 'aaa123123'
+
+md5str = hashlib.md5()
+md5str.update(pwd.encode('utf-8'))
+print(md5str.hexdigest())
