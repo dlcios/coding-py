@@ -17,3 +17,14 @@ z = 100
 while z > 10:
     # print(z)
     z -= 1
+
+a = [1,3,4,5,7,9,12,35,41,55,123,551,2315]
+a2 = [1]
+[a2.append(i) for i in a if not i in a2]
+print(a2)
+
+for x in a:
+    if x % 2 == 0:
+        break
+    else:
+        print(x)

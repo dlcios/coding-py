@@ -1,4 +1,4 @@
-#列表
+#列表查找和插入随着元素量增多变慢，但相对字典消耗内存很少
 a = [1,2,3]
 b = [3,5,7]
 c = [1,2,3]
@@ -6,6 +6,11 @@ c = [1,2,3]
 a_copy = a
 b_copy = a
 c_copy = b
+
+print(len(a))
+print(a[0],b[2])
+a.insert(0,2)
+print(a)
 
 print(id(a))
 print(id(b))
