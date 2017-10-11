@@ -1,5 +1,6 @@
 #coding: utf-8
 import re
+import codecs
 
 #模拟注册过程,用户输入用户名后进行检测用户名是否存在文件中,并返回合理的错误提示,如果不在则再输入密码,成功则添加用户信息到文件中，密码进行md5加密处理
 
@@ -8,7 +9,9 @@ import re
 #密码：字母，数字，下划线和横线,长度不小于6
 
 def register(uname = '', pwd = ''):
-    
+    filePath = 'f:/python/extra_file/user.txt'
+
+
     if uname == '':
         inputText_name = input("请输入用户名，由字母，数字，下划线组成:")
     else:
@@ -42,6 +45,23 @@ def register(uname = '', pwd = ''):
         print("两次输入密码不一致，请重新输入密码确认")
         register(inputText_name,inputText_pwd)
         return
+
+    file = codecs.open(filePath,'r','utf-8')
+    content = file.read()
+
+    exists_name = re.findall(r" "+inputText_name+" ", content)
+
+    if exists_name:
+        print("用户已存在")
+        register()
+        return
+
+    file2 = codecs.open(filePath,'a','utf-8')
+    writeLine = u'username: ' + inputText_name + ' | password: ' + inputText_pwd + '\n'
+    file2.write(writeLine)
+
+    file2.close()
+    file.close()
 
     print("注册成功")
 
